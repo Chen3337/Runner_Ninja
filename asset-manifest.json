@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/Runner_Ninja/static/js/main.cdd14180.chunk.js",
-    "main.js.map": "/Runner_Ninja/static/js/main.cdd14180.chunk.js.map",
+    "main.js": "/Runner_Ninja/static/js/main.aeaf2441.chunk.js",
+    "main.js.map": "/Runner_Ninja/static/js/main.aeaf2441.chunk.js.map",
     "runtime-main.js": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js",
     "runtime-main.js.map": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js.map",
     "static/js/2.ecb42020.chunk.js": "/Runner_Ninja/static/js/2.ecb42020.chunk.js",
     "static/js/2.ecb42020.chunk.js.map": "/Runner_Ninja/static/js/2.ecb42020.chunk.js.map",
     "index.html": "/Runner_Ninja/index.html",
-    "precache-manifest.d6a4c0d01a48edaa514b7e5413359b03.js": "/Runner_Ninja/precache-manifest.d6a4c0d01a48edaa514b7e5413359b03.js",
+    "precache-manifest.ff3a9be21996ad8beb824284c87c0cfa.js": "/Runner_Ninja/precache-manifest.ff3a9be21996ad8beb824284c87c0cfa.js",
     "service-worker.js": "/Runner_Ninja/service-worker.js",
     "static/js/2.ecb42020.chunk.js.LICENSE.txt": "/Runner_Ninja/static/js/2.ecb42020.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.165f8bcb.js",
     "static/js/2.ecb42020.chunk.js",
-    "static/js/main.cdd14180.chunk.js"
+    "static/js/main.aeaf2441.chunk.js"
   ]
 }
