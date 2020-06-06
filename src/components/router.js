@@ -7,9 +7,11 @@ class Router extends Component {
         homepage: true,
         gamepage: false,
         scorepage: false,
+        music: new Audio(process.env.PUBLIC_URL + 'daydreamer.mp3'),
     }
     componentDidMount(){
-        console.log(process.env.PUBLIC_URL);
+        this.state.music.play();
+        this.state.music.addEventListener('ended', () => {this.state.music.play();});
     }
     changePage = (onPage, toPage) => {
         console.log("change")
