@@ -7,7 +7,7 @@ class Router extends Component {
         homepage: true,
         gamepage: false,
         scorepage: false,
-        music: new Audio(process.env.PUBLIC_URL + 'daydreamer.mp3'),
+        music: new Audio('https://chen3337.github.io/Runner_Ninja/daydreamer.mp3'),
     }
     componentDidMount(){
         this.state.music.play();
