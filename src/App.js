@@ -6,7 +6,6 @@ class App extends Component {
   }
   componentDidMount() {
     window.addEventListener("resize", () => {
-      window.location.reload();
       this.checkIfLandscape();
     })
     window.addEventListener("orientationchange", () => {

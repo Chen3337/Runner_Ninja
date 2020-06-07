@@ -13,7 +13,6 @@ class Router extends Component {
     componentDidMount() {
     }
     changePage = (onPage, toPage) => {
-        console.log("change")
         this.setState({
             [toPage]: true,
             [onPage]: false,
