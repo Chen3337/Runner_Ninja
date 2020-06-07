@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import Homepage from './homepage/homepage';
 import Gamepage from './game/game';
 import Scorepage from './score/score';
+import Musicfile from './assets/daydreamer.mp3';
 class Router extends Component {
     state = {
         homepage: true,
         gamepage: false,
         scorepage: false,
-        music: new Audio('https://chen3337.github.io/Runner_Ninja/daydreamer.mp3'),
+        music: new Audio(Musicfile),
     }
     componentDidMount() {
-        var music = new Audio('https://chen3337.github.io/Runner_Ninja/daydreamer.mp3');
-        music.autoplay = true;
-        music.loop = true;
     }
     changePage = (onPage, toPage) => {
         console.log("change")
@@ -25,7 +23,7 @@ class Router extends Component {
         return (
             <div>
                 {this.state.homepage ?
-                    <Homepage changePage={this.changePage} />
+                    <Homepage musicOn={this.state.music} changePage={this.changePage} />
                     : <div />
                 }
                 {this.state.gamepage ?
