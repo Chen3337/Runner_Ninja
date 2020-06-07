@@ -8,9 +8,14 @@ class Router extends Component {
         homepage: true,
         gamepage: false,
         scorepage: false,
-        music: new Audio(Musicfile),
+        music: null,
     }
     componentDidMount() {
+        var musicAudio = new Audio(Musicfile);
+        musicAudio.loop = true;
+        this.setState({
+            music: musicAudio,
+        })
     }
     changePage = (onPage, toPage) => {
         this.setState({
