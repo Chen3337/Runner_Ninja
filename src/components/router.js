@@ -9,9 +9,10 @@ class Router extends Component {
         scorepage: false,
         music: new Audio('https://chen3337.github.io/Runner_Ninja/daydreamer.mp3'),
     }
-    componentDidMount(){
-        this.state.music.play();
-        this.state.music.addEventListener('ended', () => {this.state.music.play();});
+    componentDidMount() {
+        var music = new Audio('https://chen3337.github.io/Runner_Ninja/daydreamer.mp3');
+        music.autoplay = true;
+        music.loop = true;
     }
     changePage = (onPage, toPage) => {
         console.log("change")
