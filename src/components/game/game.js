@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Character from './character';
+import Ground from './ground';
+
 class Game extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +13,8 @@ class Game extends Component {
         screenHeight: window.innerHeight,
         context: null,
         distance: window.innerWidth * 0.06,
-        Character: Character,
+        Character: new Character(),
+        Ground: Ground,
     }
 
     componentDidMount() {
@@ -24,10 +27,7 @@ class Game extends Component {
     update = () => {
         if (this.state.context !== null) {
             this.state.context.clearRect(0, 0, this.state.screenWidth, this.state.screenHeight);
-            this.state.Character.render();
-            // this.state.context.drawImage(img, 0, 0, 100, 100);
-            this.state.context.rect(100,100,100,100);
-            this.state.context.stroke();
+            this.state.Character.render(this.state);
         }
         requestAnimationFrame(() => { this.update() });
     }

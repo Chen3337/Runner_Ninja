@@ -1,21 +1,18 @@
-import Imagesurl from '../assets/imageurl'
+import Idle from '../assets/images/Idle__000.png';
 class Character {
     constructor(){
         this.character = 'ninja';
-        this.run = [
-
-        ]
+        this.imagenow = new Image();
+        this.mode = "idle";
+        this.Idle = [Idle];
+        this.Running = [];
+        this.Fly = [];
+        this.Jump = []
     }
-    imageLoading(){
-        // add all the images into the run or means preload
-        for(var i=0; i < Imagesurl.length; i++){
-            var img = new Image();
-            img.src = Imagesurl[i];
-            this.run.push(img);
-        }
-    }
-    render(){
-        console.log();
+    render(state) {
+        this.imagenow.src = Idle;
+        var context = state.context;
+        context.drawImage(this.imagenow, 0, 0, 100, 100);
     }
 }
 export default Character
