@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Character from './character';
-import Ground from './ground';
-
+// import Ground from './ground';
+import Preloadimage from './preloadimage';
 class Game extends Component {
     constructor(props) {
         super(props);
         this.canvas = React.createRef();
-        this.loadingPage = document.getElementById('loading');
+        this.Idle = React.createRef();
+        // this.loadingPage = document.getElementById('loading');
     }
     state = {
         screenWidth: window.innerWidth,
@@ -14,7 +15,8 @@ class Game extends Component {
         context: null,
         distance: window.innerWidth * 0.06,
         Character: new Character(),
-        Ground: Ground,
+        // Ground: Ground,
+        NinjaImage: null,
     }
 
     componentDidMount() {
@@ -31,13 +33,20 @@ class Game extends Component {
         }
         requestAnimationFrame(() => { this.update() });
     }
+    setNinjaImages = (images) => {
+        this.setState({
+            NinjaImage: images,
+        })
+    }
     render() {
+        console.log(this.state.NinjaImage);
         return (
             <div style={{ backgroundColor: 'skyblue', width: "100%", height: "100vh", backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
                 <canvas ref={this.canvas}
                     width={this.state.screenWidth}
                     height={this.state.screenHeight}
                 />
+                <Preloadimage setNinjaImages={this.setNinjaImages} />
             </div>
 
         )
