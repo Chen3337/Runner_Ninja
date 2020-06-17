@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Character from './character';
-// import Ground from './ground';
+import Ground from './ground';
 import Preloadimage from './preloadimage';
 class Game extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Game extends Component {
         context: null,
         distance: window.innerWidth * 0.06,
         Character: new Character(),
-        // Ground: Ground,
+        Ground: new Ground(),
         NinjaImage: null,
     }
 
@@ -27,9 +27,10 @@ class Game extends Component {
         requestAnimationFrame(() => { this.update() });
     }
     update = () => {
-        if (this.state.context !== null) {
+        if (this.state.context !== null && this.state.NinjaImage !== null) {
             this.state.context.clearRect(0, 0, this.state.screenWidth, this.state.screenHeight);
             this.state.Character.render(this.state);
+            this.state.Ground.render(this.state);
         }
         requestAnimationFrame(() => { this.update() });
     }
