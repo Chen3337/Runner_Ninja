@@ -1,21 +1,39 @@
 {
   "files": {
-    "main.js": "/Runner_Ninja/static/js/main.27ae3b8d.chunk.js",
-    "main.js.map": "/Runner_Ninja/static/js/main.27ae3b8d.chunk.js.map",
+    "main.js": "/Runner_Ninja/static/js/main.4f5d72ed.chunk.js",
+    "main.js.map": "/Runner_Ninja/static/js/main.4f5d72ed.chunk.js.map",
     "runtime-main.js": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js",
     "runtime-main.js.map": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js.map",
-    "static/js/2.05a9aef1.chunk.js": "/Runner_Ninja/static/js/2.05a9aef1.chunk.js",
-    "static/js/2.05a9aef1.chunk.js.map": "/Runner_Ninja/static/js/2.05a9aef1.chunk.js.map",
+    "static/js/2.583d6559.chunk.js": "/Runner_Ninja/static/js/2.583d6559.chunk.js",
+    "static/js/2.583d6559.chunk.js.map": "/Runner_Ninja/static/js/2.583d6559.chunk.js.map",
     "index.html": "/Runner_Ninja/index.html",
-    "precache-manifest.de7dec3818d740bf3a1b4d159db4980f.js": "/Runner_Ninja/precache-manifest.de7dec3818d740bf3a1b4d159db4980f.js",
+    "precache-manifest.9e2c5e270e602b6f6513579b7bd7cace.js": "/Runner_Ninja/precache-manifest.9e2c5e270e602b6f6513579b7bd7cace.js",
     "service-worker.js": "/Runner_Ninja/service-worker.js",
-    "static/js/2.05a9aef1.chunk.js.LICENSE.txt": "/Runner_Ninja/static/js/2.05a9aef1.chunk.js.LICENSE.txt",
+    "static/js/2.583d6559.chunk.js.LICENSE.txt": "/Runner_Ninja/static/js/2.583d6559.chunk.js.LICENSE.txt",
+    "static/media/Glide_000.png": "/Runner_Ninja/static/media/Glide_000.e124eec0.png",
     "static/media/Idle__000.png": "/Runner_Ninja/static/media/Idle__000.dcab8af0.png",
+    "static/media/Jump__000.png": "/Runner_Ninja/static/media/Jump__000.069af838.png",
+    "static/media/Jump__001.png": "/Runner_Ninja/static/media/Jump__001.2297b4da.png",
+    "static/media/Jump__002.png": "/Runner_Ninja/static/media/Jump__002.26074aac.png",
+    "static/media/Jump__006.png": "/Runner_Ninja/static/media/Jump__006.d87fbda5.png",
+    "static/media/Jump__007.png": "/Runner_Ninja/static/media/Jump__007.854a8ee9.png",
+    "static/media/Jump__009.png": "/Runner_Ninja/static/media/Jump__009.928ab5d5.png",
+    "static/media/Run__000.png": "/Runner_Ninja/static/media/Run__000.e815c389.png",
+    "static/media/Run__001.png": "/Runner_Ninja/static/media/Run__001.02daf007.png",
+    "static/media/Run__002.png": "/Runner_Ninja/static/media/Run__002.3fbd16f2.png",
+    "static/media/Run__003.png": "/Runner_Ninja/static/media/Run__003.ef79f5ab.png",
+    "static/media/Run__004.png": "/Runner_Ninja/static/media/Run__004.20348cbf.png",
+    "static/media/Run__005.png": "/Runner_Ninja/static/media/Run__005.ae3c8f68.png",
+    "static/media/Run__006.png": "/Runner_Ninja/static/media/Run__006.a40039fb.png",
+    "static/media/Run__007.png": "/Runner_Ninja/static/media/Run__007.017f25b8.png",
+    "static/media/Run__008.png": "/Runner_Ninja/static/media/Run__008.1022fb8f.png",
+    "static/media/Run__009.png": "/Runner_Ninja/static/media/Run__009.0815a96a.png",
+    "static/media/Throw__004.png": "/Runner_Ninja/static/media/Throw__004.c202bdb2.png",
     "static/media/daydreamer.mp3": "/Runner_Ninja/static/media/daydreamer.e5ae92f6.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.165f8bcb.js",
-    "static/js/2.05a9aef1.chunk.js",
-    "static/js/main.27ae3b8d.chunk.js"
+    "static/js/2.583d6559.chunk.js",
+    "static/js/main.4f5d72ed.chunk.js"
   ]
 }
