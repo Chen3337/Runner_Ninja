@@ -21,6 +21,17 @@ class Game extends Component {
 
     componentDidMount() {
         const context = this.canvas.current.getContext('2d');
+        window.addEventListener('touchmove', ev => {
+            ev.preventDefault();
+            ev.stopImmediatePropagation();
+            var clientX = ev.touches[0].clientX;
+            var clientY = ev.touches[0].clientY;
+            console.log(clientY);
+        }, { passive: false });
+        window.addEventListener('touchforcechange', ev => {
+            ev.preventDefault();
+            ev.stopImmediatePropagation();
+        }, { passive: false });
         this.setState({
             context: context,
         })
@@ -35,12 +46,26 @@ class Game extends Component {
         requestAnimationFrame(() => { this.update() });
     }
     setNinjaImages = (images) => {
+        window.addEventListener('touchstart', ev => {
+            ev.preventDefault();
+            ev.stopImmediatePropagation();
+            var clientX = ev.touches[0].clientX;
+            var clientY = ev.touches[0].clientY;
+            console.log(clientX, clientY);
+            if(clientX < this.state.screenWidth /2){
+                if(this.state.Character.mode !== 'jump'){
+                    this.state.Character.charMode('jump');
+                }
+            }
+            else{
+                this.state.Character.charMode('throw');
+            }
+        }, { passive: false });
         this.setState({
             NinjaImage: images,
         })
     }
     render() {
-        console.log(this.state.NinjaImage);
         return (
             <div style={{ backgroundColor: 'skyblue', width: "100%", height: "100vh", backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
                 <canvas ref={this.canvas}
