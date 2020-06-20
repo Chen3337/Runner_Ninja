@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Character from './character';
 import Ground from './ground';
 import Preloadimage from './preloadimage';
+import Kunai from './kunai';
 class Game extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +17,7 @@ class Game extends Component {
         distance: window.innerWidth * 0.06,
         Character: new Character(),
         Ground: new Ground(),
+        Kunai: null,
         NinjaImage: null,
     }
 
@@ -24,9 +26,9 @@ class Game extends Component {
         window.addEventListener('touchmove', ev => {
             ev.preventDefault();
             ev.stopImmediatePropagation();
-            var clientX = ev.touches[0].clientX;
-            var clientY = ev.touches[0].clientY;
-            console.log(clientY);
+            // var clientX = ev.touches[0].clientX;
+            // var clientY = ev.touches[0].clientY;
+            // console.log(clientY);
         }, { passive: false });
         window.addEventListener('touchforcechange', ev => {
             ev.preventDefault();
@@ -42,6 +44,9 @@ class Game extends Component {
             this.state.context.clearRect(0, 0, this.state.screenWidth, this.state.screenHeight);
             this.state.Character.render(this.state);
             this.state.Ground.render(this.state);
+            if(this.state.Kunai){
+                this.state.Kunai.render(this.state);
+            }
         }
         requestAnimationFrame(() => { this.update() });
     }
@@ -52,13 +57,18 @@ class Game extends Component {
             var clientX = ev.touches[0].clientX;
             var clientY = ev.touches[0].clientY;
             console.log(clientX, clientY);
-            if(clientX < this.state.screenWidth /2){
-                if(this.state.Character.mode !== 'jump'){
+            if (clientX < this.state.screenWidth / 2) {
+                if (this.state.Character.mode === 'run') {
                     this.state.Character.charMode('jump');
                 }
             }
-            else{
-                this.state.Character.charMode('throw');
+            else {
+                if (this.state.Character.mode === 'run') {
+                    this.state.Character.charMode('throw');
+                    this.setState({
+                        Kunai: new Kunai(),
+                    })
+                }
             }
         }, { passive: false });
         this.setState({
