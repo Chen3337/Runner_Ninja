@@ -61,6 +61,9 @@ class Game extends Component {
                 if (this.state.Character.mode === 'run') {
                     this.state.Character.charMode('jump');
                 }
+                else if(this.state.Character.mode === 'jump'){
+                    this.state.Character.charMode('glide');
+                }
             }
             else {
                 if (this.state.Character.mode === 'run') {

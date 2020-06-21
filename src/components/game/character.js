@@ -61,6 +61,11 @@ class Character {
         }
         else if (this.mode === 'glide'){
             images = images.Glide[this.spriteOn];
+            this.Y = this.Y + (this.JumpHeight / 4);
+            if(this.Y > (window.innerHeight * 0.7)){
+                this.Y = window.innerHeight * 0.7;
+                this.charMode('run');
+            }
         }
         context.drawImage(images, this.X, this.Y, this.sizeX, this.sizeY);
         this.cycle += 1;
