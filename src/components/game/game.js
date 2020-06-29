@@ -4,6 +4,7 @@ import Ground from './ground';
 import Preloadimage from './preloadimage';
 import Kunai from './kunai';
 import Wall from './wall';
+import Mine from './mine';
 class Game extends Component {
     constructor(props) {
         super(props);
@@ -110,7 +111,7 @@ class Game extends Component {
         }
         if (mine) {
             number = Math.floor(Math.random() * 4000) + 1000;
-            newTrap = new Wall();
+            newTrap = new Mine();
             mineTimer = setTimeout(() => {
                 this.setTraps(false, true);
             }, number);
