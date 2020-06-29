@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/Runner_Ninja/static/js/main.264b605f.chunk.js",
-    "main.js.map": "/Runner_Ninja/static/js/main.264b605f.chunk.js.map",
+    "main.js": "/Runner_Ninja/static/js/main.4b4fe1f6.chunk.js",
+    "main.js.map": "/Runner_Ninja/static/js/main.4b4fe1f6.chunk.js.map",
     "runtime-main.js": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js",
     "runtime-main.js.map": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js.map",
     "static/js/2.583d6559.chunk.js": "/Runner_Ninja/static/js/2.583d6559.chunk.js",
     "static/js/2.583d6559.chunk.js.map": "/Runner_Ninja/static/js/2.583d6559.chunk.js.map",
     "index.html": "/Runner_Ninja/index.html",
-    "precache-manifest.02789bdb3a896ba9ba80d3af7a885c5c.js": "/Runner_Ninja/precache-manifest.02789bdb3a896ba9ba80d3af7a885c5c.js",
+    "precache-manifest.84dd695d262478d6a8a6374094789661.js": "/Runner_Ninja/precache-manifest.84dd695d262478d6a8a6374094789661.js",
     "service-worker.js": "/Runner_Ninja/service-worker.js",
     "static/js/2.583d6559.chunk.js.LICENSE.txt": "/Runner_Ninja/static/js/2.583d6559.chunk.js.LICENSE.txt",
     "static/media/Glide_000.png": "/Runner_Ninja/static/media/Glide_000.e124eec0.png",
@@ -34,6 +34,6 @@
   "entrypoints": [
     "static/js/runtime-main.165f8bcb.js",
     "static/js/2.583d6559.chunk.js",
-    "static/js/main.264b605f.chunk.js"
+    "static/js/main.4b4fe1f6.chunk.js"
   ]
 }
