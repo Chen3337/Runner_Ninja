@@ -78,7 +78,7 @@ class Game extends Component {
                 else if (this.state.Character.mode === 'jump') {
                     this.state.Character.charMode('glide');
                 }
-                else if (this.state.Character.mode === 'glide'){
+                else if (this.state.Character.mode === 'glide') {
                     this.state.Character.charMode('idle');
                 }
             }
@@ -128,9 +128,9 @@ class Game extends Component {
             <div style={{ backgroundColor: 'skyblue', width: "100%", height: "100vh", backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
                 {this.state.start ?
                     <div style={{ width: '100%', height: '100vh', backgroundColor: 'black', opacity: 0.7, position: 'fixed', top: 0, left: 0 }}>
-                        <div onClick={() => this.beginGame() } style={{ color: 'white', textAlign: "center", position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', border: 'dashed 1px white', padding: '10px', zIndex:1000}}>
+                        <button onTouchEnd={() => { this.beginGame(); }} onMouseDown={() => { this.beginGame(); }} style={{ color: 'white', textAlign: "center", position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', border: 'dashed 1px white', padding: '10px', backgroundColor: 'black', zIndex: 1000, cursor: 'pointer', display: 'inline-block' }}>
                             START
-                        </div>
+                        </button>
                         <div style={{ color: 'white', textAlign: "center", position: 'absolute', left: '25%', top: '50%', transform: 'translate(-50%, -50%)', padding: '10px' }}>
                             JUMP / GLide <br /> (LEFT)
                         </div>
