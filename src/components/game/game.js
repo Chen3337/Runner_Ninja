@@ -128,8 +128,8 @@ class Game extends Component {
             <div style={{ backgroundColor: 'skyblue', width: "100%", height: "100vh", backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
                 {this.state.start ?
                     <div style={{ width: '100%', height: '100vh', backgroundColor: 'black', opacity: 0.7, position: 'fixed', top: 0, left: 0 }}>
-                        <div onClick={() => this.beginGame() } style={{ color: 'white', textAlign: "center", position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', border: 'dashed 1px white', padding: '10px', cursor:'pointer'}}>
-                            START!
+                        <div onClick={() => this.beginGame() } style={{ color: 'white', textAlign: "center", position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', border: 'dashed 1px white', padding: '10px', zIndex:1000}}>
+                            START
                         </div>
                         <div style={{ color: 'white', textAlign: "center", position: 'absolute', left: '25%', top: '50%', transform: 'translate(-50%, -50%)', padding: '10px' }}>
                             JUMP / GLide <br /> (LEFT)
