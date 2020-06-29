@@ -21,7 +21,12 @@ class Character {
         var context = state.context;
         var images = state.NinjaImage;
         if(this.mode === 'idle'){
-            images = images.Idle[this.spriteOn];
+            images = images.Jump[this.spriteOn];
+            this.Y = this.Y + this.JumpHeight;
+            if(this.Y > (window.innerHeight * 0.7)){
+                this.Y = window.innerHeight * 0.7;
+                this.charMode('run');
+            }
         }
         else if (this.mode === 'jump'){
             if(this.cycle === 8){
