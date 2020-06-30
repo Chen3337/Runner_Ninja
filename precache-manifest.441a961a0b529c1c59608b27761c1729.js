@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c42327de872daebac4f9f3f4dbb8b17e",
+    "revision": "b9a389f2ed548b11a61e8726843695e5",
     "url": "/Runner_Ninja/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Runner_Ninja/static/js/2.583d6559.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4fd29481841797604655",
-    "url": "/Runner_Ninja/static/js/main.f4d9f684.chunk.js"
+    "revision": "d4d0a3e7398e3009882b",
+    "url": "/Runner_Ninja/static/js/main.640c8fd0.chunk.js"
   },
   {
     "revision": "8496e680bbfd3c6631c4",
@@ -22,10 +22,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "e124eec0412519268d2b7671ca0a137f",
     "url": "/Runner_Ninja/static/media/Glide_000.e124eec0.png"
-  },
-  {
-    "revision": "dcab8af0445ff5ef6b80dcfc0b953ba0",
-    "url": "/Runner_Ninja/static/media/Idle__000.dcab8af0.png"
   },
   {
     "revision": "069af83802c28a5a11baa1d129b92ce5",
@@ -94,6 +90,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c202bdb24dd0ec06bb80e90caa2d5bfa",
     "url": "/Runner_Ninja/static/media/Throw__004.c202bdb2.png"
+  },
+  {
+    "revision": "26a8e4ea8426eeb454571d1dbb4e96f7",
+    "url": "/Runner_Ninja/static/media/boss.26a8e4ea.png"
   },
   {
     "revision": "e5ae92f6d6610f33503080ab3712404f",
