@@ -9,6 +9,8 @@ class Router extends Component {
         gamepage: false,
         scorepage: false,
         music: null,
+        score: null,
+        bossScore: null,
     }
     componentDidMount() {
         var musicAudio = new Audio(Musicfile);
@@ -17,10 +19,12 @@ class Router extends Component {
             music: musicAudio,
         })
     }
-    changePage = (onPage, toPage) => {
+    changePage = (onPage, toPage, score, bossScore) => {
         this.setState({
             [toPage]: true,
             [onPage]: false,
+            score: score,
+            bossScore: bossScore
         })
     }
     render() {
@@ -35,7 +39,7 @@ class Router extends Component {
                     : <div />
                 }
                 {this.state.scorepage ?
-                    <Scorepage changePage={this.changePage} />
+                    <Scorepage changePage={this.changePage} score={this.state.score} bossScore={this.state.bossScore}/>
                     : <div />
                 }
             </div>

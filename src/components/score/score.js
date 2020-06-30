@@ -6,8 +6,14 @@ class Homepage extends Component {
     }
     render() {
         return (
-            <div>
-                <button style={{ textAlign: "center", position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}}><h1>Start</h1></button>
+            <div style={{backgroundColor: 'blue'}}>
+                <div style={{textAlign: "center", position: 'absolute', left: '25%', top: '5%', transform: 'translate(-50%, -50%)'}}>
+                    <h3>Score : {this.props.score}</h3>
+                </div>
+                <div style={{textAlign: "center", position: 'absolute', left: '75%', top: '5%', transform: 'translate(-50%, -50%)'}}>
+                    <h3>Boss Damage : {this.props.bossScore}</h3>
+                </div>
+                <button onClick={() => {this.props.changePage('scorepage','homepage');}} style={{ textAlign: "center", position: 'absolute', left: '50%', top: '75%', transform: 'translate(-50%, -50%)'}}>Back</button>
             </div>
 
 

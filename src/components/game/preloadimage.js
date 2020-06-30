@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Idle from '../assets/images/Idle__000.png';
+import Boss from '../assets/images/boss.png';
 import Glide from '../assets/images/Glide_000.png';
 import Jump1 from '../assets/images/Jump__000.png';
 import Jump2 from '../assets/images/Jump__001.png';
@@ -22,7 +22,7 @@ import Throw from '../assets/images/Throw__004.png';
 class Preload extends Component {
     constructor(props) {
         super(props);
-        this.Idle = React.createRef();
+        this.Boss = React.createRef();
         this.Glide = React.createRef();
         this.Jump1 = React.createRef();
         this.Jump2 = React.createRef();
@@ -45,7 +45,7 @@ class Preload extends Component {
     }
     state = {
         images: 0,
-        Idle: [],
+        Boss: [],
         Glide: [],
         Jump: [],
         Run: [],
@@ -77,7 +77,7 @@ class Preload extends Component {
 
         return (
             <div style={{ display: 'none' }}>
-                <img name="Idle" ref={this.Idle} src={Idle} alt="0" onLoad={(e) => { this.LoadImage(e, this.Idle.current) }} />
+                <img name="Boss" ref={this.Boss} src={Boss} alt="0" onLoad={(e) => { this.LoadImage(e, this.Boss.current) }} />
                 <img name='Glide' ref={this.Glide} src={Glide} alt="0" onLoad={(e) => { this.LoadImage(e, this.Glide.current) }} />
                 <img name='Jump' ref={this.Jump1} src={Jump1} alt="0" onLoad={(e) => { this.LoadImage(e, this.Jump1.current) }} />
                 <img name='Jump' ref={this.Jump2} src={Jump2} alt="1" onLoad={(e) => { this.LoadImage(e, this.Jump2.current) }} />

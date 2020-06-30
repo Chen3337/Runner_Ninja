@@ -1,5 +1,6 @@
 class Mine {
     constructor() {
+        this.trap = 'mine';
         this.X = window.innerWidth;
         this.Y = window.innerHeight * 0.82;
         this.sizeX = window.innerWidth * 0.01;

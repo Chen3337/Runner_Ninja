@@ -5,12 +5,13 @@ import Preloadimage from './preloadimage';
 import Kunai from './kunai';
 import Wall from './wall';
 import Mine from './mine';
+import Boss from './boss';
 class Game extends Component {
     constructor(props) {
+        // this.props.changePage('gamepage','scorepage');
         super(props);
         this.canvas = React.createRef();
         this.Idle = React.createRef();
-        // this.loadingPage = document.getElementById('loading');
     }
     state = {
         screenWidth: window.innerWidth,
@@ -26,38 +27,87 @@ class Game extends Component {
         start: false,
         wallTimer: null,
         mineTimer: null,
+        score: 0,
+        bossScore: 0,
+        scoreTimer: null,
+        Boss: new Boss(),
+        EndGame: false,
     }
-
     componentDidMount() {
         const context = this.canvas.current.getContext('2d');
-        window.addEventListener('touchmove', ev => {
-            ev.preventDefault();
-            ev.stopImmediatePropagation();
-        }, { passive: false });
-        window.addEventListener('touchforcechange', ev => {
-            ev.preventDefault();
-            ev.stopImmediatePropagation();
-        }, { passive: false });
+        window.addEventListener('touchmove',this.preventdefault, { passive: false });
+        window.addEventListener('touchforcechange', this.preventdefault, { passive: false });
         this.setState({
             context: context,
         })
         requestAnimationFrame(() => { this.update() });
+    }
+    componentWillUnmount() {
+        window.removeEventListener('touchstart', this.Charatermotions, { passive: false });
+        window.removeEventListener('touchmove',this.preventdefault, { passive: false });
+        window.removeEventListener('touchforcechange', this.preventdefault, { passive: false });
+        clearInterval(this.state.scoreTimer);
+        clearTimeout(this.state.mineTimer);
+        clearTimeout(this.state.wallTimer);
+    }
+    preventdefault = (ev) =>{
+        ev.preventDefault();
+        ev.stopImmediatePropagation();
     }
     update = () => {
         if (this.state.context !== null && this.state.NinjaImage !== null) {
             this.state.context.clearRect(0, 0, this.state.screenWidth, this.state.screenHeight);
             this.state.Character.render(this.state);
             this.state.Ground.render(this.state);
+            this.state.Boss.render(this.state);
             if (this.state.Traps.length !== 0) {
                 for (var i = 0; i < this.state.Traps.length; i++) {
                     this.state.Traps[i].render(this.state);
+                    if (this.state.Traps[i].X < -100) {
+                        var array = [...this.state.Traps];
+                        array.splice(i, 1);
+                        i -= 1;
+                        this.setState({ Traps: array });
+                    }
+                }
+                for (var j = 0; j < this.state.Traps.length; j++) {
+                    var Trap = this.state.Traps[j];
+                    if (Trap.trap === 'wall') {
+                        if (Trap.X < (this.state.screenWidth * 0.05) && Trap.X > (this.state.screenWidth * 0.01)) {
+                            if ((this.state.Character.Y + this.state.Character.sizeY) > Trap.Y) {
+                                console.log('touched wall');
+                                this.gameOver();
+                            }
+                        }
+                    }
+                    else if (Trap.trap === 'mine') {
+                        if (Trap.X < (this.state.screenWidth * 0.05) && Trap.X > (this.state.screenWidth * 0.01)) {
+                            if ((this.state.Character.Y + this.state.Character.sizeY) > Trap.Y) {
+                                this.gameOver();
+                            }
+                        }
+                    }
                 }
             }
             if (this.state.Kunai) {
                 this.state.Kunai.render(this.state);
+                if(this.state.Kunai.X > this.state.screenWidth){
+                    this.setState({Kunai: null});
+                }
+                else if(this.state.Kunai.X > (this.state.screenWidth * 0.93) && this.state.Kunai.X < (this.state.screenWidth * 0.95)){
+                    if(this.state.Kunai.Y > (this.state.Boss.Y - this.state.screenHeight * 0.05) && this.state.Kunai.Y < (this.state.Boss.Y + this.state.screenHeight * 0.18)){
+                        var newbossScore = this.state.bossScore + 1;
+                        this.setState({
+                            bossScore: newbossScore,
+                            Kunai: null,
+                        });
+                    }
+                }
             }
         }
-        requestAnimationFrame(() => { this.update() });
+        if(!this.state.EndGame){
+            requestAnimationFrame(() => { this.update() });
+        }
     }
     setNinjaImages = (images) => {
         this.setState({
@@ -65,36 +115,45 @@ class Game extends Component {
             start: true,
         })
     }
-    beginGame = () => {
-        window.addEventListener('touchstart', ev => {
-            ev.preventDefault();
-            ev.stopImmediatePropagation();
-            var clientX = ev.touches[0].clientX;
-            var clientY = ev.touches[0].clientY;
-            console.log(clientX, clientY);
-            if (clientX < this.state.screenWidth / 2) {
-                if (this.state.Character.mode === 'run') {
-                    this.state.Character.charMode('jump');
-                }
-                else if (this.state.Character.mode === 'jump') {
-                    this.state.Character.charMode('glide');
-                }
-                else if (this.state.Character.mode === 'glide') {
-                    this.state.Character.charMode('idle');
-                }
+    Charatermotions = (ev) =>{
+        ev.preventDefault();
+        ev.stopImmediatePropagation();
+        var clientX = ev.touches[0].clientX;
+        var clientY = ev.touches[0].clientY;
+        console.log(clientX, clientY);
+        if (clientX < this.state.screenWidth / 2) {
+            if (this.state.Character.mode === 'run') {
+                this.state.Character.charMode('jump');
             }
-            else {
-                if (this.state.Character.mode === 'run') {
+            else if (this.state.Character.mode === 'jump') {
+                this.state.Character.charMode('glide');
+            }
+            else if (this.state.Character.mode === 'glide') {
+                this.state.Character.charMode('idle');
+            }
+        }
+        else {
+            if (this.state.Character.mode === 'run' || this.state.Character.mode === 'glide' || this.state.Character.mode === 'jump') {
+                if(!this.state.Kunai){
                     this.state.Character.charMode('throw');
                     this.setState({
-                        Kunai: new Kunai(),
+                        Kunai: new Kunai(this.state.Character.Y),
                     })
                 }
             }
-        }, { passive: false });
+        }
+    }
+    beginGame = () => {
+        window.addEventListener('touchstart', this.Charatermotions, { passive: false });
         this.setTraps(true, true);
+        var scoretimer = setInterval(() => {
+            var score = this.state.score + 1;
+            console.log(score);
+            this.setState({ score: score });
+        }, 1000);
         this.setState({
             start: false,
+            scoreTimer: scoretimer,
         })
     }
     setTraps = (wall, mine) => {
@@ -124,6 +183,10 @@ class Game extends Component {
             mineTimer: mineTimer
         })
     }
+    gameOver = () => {
+        this.setState({EndGame: true});
+        this.props.changePage('gamepage','scorepage', this.state.score, this.state.bossScore);
+    }
     render() {
         return (
             <div style={{ backgroundColor: 'skyblue', width: "100%", height: "100vh", backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
@@ -141,6 +204,12 @@ class Game extends Component {
                     </div>
                     : <div />
                 }
+                <div style={{textAlign: "center", position: 'absolute', left: '25%', top: '5%', transform: 'translate(-50%, -50%)'}}>
+                    Score : {this.state.score}
+                </div>
+                <div style={{textAlign: "center", position: 'absolute', left: '75%', top: '5%', transform: 'translate(-50%, -50%)'}}>
+                    Boss Damage : {this.state.bossScore}
+                </div>
                 <canvas ref={this.canvas}
                     width={this.state.screenWidth}
                     height={this.state.screenHeight}

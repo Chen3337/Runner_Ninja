@@ -1,5 +1,6 @@
 class Wall {
     constructor() {
+        this.trap = 'wall';
         this.X = window.innerWidth;
         this.Y = window.innerHeight * 0.75;
         this.sizeX = window.innerWidth * 0.02;

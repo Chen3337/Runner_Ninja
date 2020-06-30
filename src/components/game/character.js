@@ -4,7 +4,7 @@ class Character {
         this.mode = "run";
         this.cycle = 0;
         this.spriteOn = 0;
-        this.X = 10;
+        this.X = 0;
         this.Y = window.innerHeight * 0.7;
         this.sizeX = window.innerWidth * 0.06;
         this.sizeY = window.innerHeight * 0.15;
@@ -59,8 +59,8 @@ class Character {
             images = images.Run[this.spriteOn];
         }
         else if (this.mode === 'throw'){
-            if(this.cycle === 10){
-                this.charMode('run');
+            if(this.cycle === 5){
+                this.charMode('idle');
             }
             images = images.Throw[this.spriteOn];
         }
