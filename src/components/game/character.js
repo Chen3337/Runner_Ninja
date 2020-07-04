@@ -37,14 +37,15 @@ class Character {
                 this.Y -= this.JumpHeight;
             }
             else{
-                this.Y += this.JumpHeight;
+                this.Y += this.JumpHeight * 1.5;
             }
             if(this.spriteOn === 6){
                 this.spriteOn = 0;
             }
             images = images.Jump[this.spriteOn];
             this.Jumpcycle += 1;
-            if(this.Jumpcycle === 56){
+            if(this.Jumpcycle === 46){
+                this.Y = window.innerHeight * 0.7;
                 this.charMode('run');
             }
         }

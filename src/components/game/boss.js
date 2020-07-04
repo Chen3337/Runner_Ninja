@@ -10,7 +10,6 @@ class Boss {
             width: 140,
             height: 155,
         };
-        this.attsprite = { startX: 0, startY: 710, width: 140, height: 100 };
         this.sizeX = this.ScreenX * 0.06;
         this.sizeY = this.ScreenY * 0.2;
         this.mode = 'move';

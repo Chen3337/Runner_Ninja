@@ -6,6 +6,10 @@ class Wall {
         this.sizeX = window.innerWidth * 0.02;
         this.sizeY = window.innerHeight * 0.1;
         this.distance = window.innerWidth * 0.004;
+        this.damage = true;
+    }
+    finishDamge(){
+        this.damage = false;
     }
     render(state){
         this.X -= this.distance;
