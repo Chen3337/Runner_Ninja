@@ -5,7 +5,7 @@ class Wall {
         this.Y = window.innerHeight * 0.75;
         this.sizeX = window.innerWidth * 0.02;
         this.sizeY = window.innerHeight * 0.1;
-        this.distance = window.innerWidth * 0.005;
+        this.distance = window.innerWidth * 0.004;
     }
     render(state){
         this.X -= this.distance;

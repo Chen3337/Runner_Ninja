@@ -6,9 +6,9 @@ import Kunai from './kunai';
 import Wall from './wall';
 import Mine from './mine';
 import Boss from './boss';
+import BossAttack from './bossattack';
 class Game extends Component {
     constructor(props) {
-        // this.props.changePage('gamepage','scorepage');
         super(props);
         this.canvas = React.createRef();
         this.Idle = React.createRef();
@@ -31,7 +31,10 @@ class Game extends Component {
         bossScore: 0,
         scoreTimer: null,
         Boss: new Boss(),
+        bossAttackTimer: null,
         EndGame: false,
+        bossAttack: null,
+        Life: 1,
     }
     componentDidMount() {
         const context = this.canvas.current.getContext('2d');
@@ -49,6 +52,7 @@ class Game extends Component {
         clearInterval(this.state.scoreTimer);
         clearTimeout(this.state.mineTimer);
         clearTimeout(this.state.wallTimer);
+        clearTimeout(this.state.bossAttackTimer);
     }
     preventdefault = (ev) =>{
         ev.preventDefault();
@@ -89,6 +93,17 @@ class Game extends Component {
                     }
                 }
             }
+            if(this.state.bossAttack){
+                this.state.bossAttack.render(this.state);
+                if(this.state.bossAttack.X < (this.state.screenWidth * 0.05) && this.state.bossAttack.X > (this.state.screenWidth * 0.01)){
+                    if(this.state.bossAttack.Y > this.state.Character.Y && this.state.bossAttack.Y < (this.state.Character.Y + this.state.screenHeight * 0.13)){
+                        this.gameOver();
+                    }    
+                }
+                if(this.state.bossAttack.X < -1*(this.state.bossAttack.sizeX)){
+                    this.setState({bossAttack: null});
+                }
+            }
             if (this.state.Kunai) {
                 this.state.Kunai.render(this.state);
                 if(this.state.Kunai.X > this.state.screenWidth){
@@ -101,6 +116,17 @@ class Game extends Component {
                             bossScore: newbossScore,
                             Kunai: null,
                         });
+                    }
+                }
+            }
+            if(this.state.Kunai && this.state.bossAttack){
+                var attackDistance = this.state.bossAttack.X - this.state.Kunai.X;
+                if(attackDistance < (this.state.screenWidth * 0.02) && attackDistance > 0){
+                    if(this.state.Kunai.Y < (this.state.bossAttack.Y + this.state.screenHeight * 0.045) && this.state.Kunai.Y > (this.state.bossAttack.Y - this.state.screenHeight * 0.015)){
+                        this.setState({
+                            Kunai: null,
+                            bossAttack: null,
+                        })
                     }
                 }
             }
@@ -119,8 +145,6 @@ class Game extends Component {
         ev.preventDefault();
         ev.stopImmediatePropagation();
         var clientX = ev.touches[0].clientX;
-        var clientY = ev.touches[0].clientY;
-        console.log(clientX, clientY);
         if (clientX < this.state.screenWidth / 2) {
             if (this.state.Character.mode === 'run') {
                 this.state.Character.charMode('jump');
@@ -148,12 +172,27 @@ class Game extends Component {
         this.setTraps(true, true);
         var scoretimer = setInterval(() => {
             var score = this.state.score + 1;
-            console.log(score);
             this.setState({ score: score });
         }, 1000);
+        this.bossAttack();
         this.setState({
             start: false,
             scoreTimer: scoretimer,
+        })
+    }
+    bossAttack = (attack) => {
+        var number = Math.floor(Math.random() * 5000) + 5000;
+        var bossAttackTimer = setTimeout(() => {
+            this.state.Boss.changemode('attack');
+            this.bossAttack(true);
+        }, number);
+        var bossAtt;
+        if(attack){
+            bossAtt = new BossAttack(this.state.Boss.Y, this.state.Character.Y);
+        }
+        this.setState({
+            bossAttackTimer: bossAttackTimer,
+            bossAttack: bossAtt
         })
     }
     setTraps = (wall, mine) => {
