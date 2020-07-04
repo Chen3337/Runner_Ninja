@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/Runner_Ninja/static/js/main.640c8fd0.chunk.js",
-    "main.js.map": "/Runner_Ninja/static/js/main.640c8fd0.chunk.js.map",
+    "main.js": "/Runner_Ninja/static/js/main.8ed43195.chunk.js",
+    "main.js.map": "/Runner_Ninja/static/js/main.8ed43195.chunk.js.map",
     "runtime-main.js": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js",
     "runtime-main.js.map": "/Runner_Ninja/static/js/runtime-main.165f8bcb.js.map",
-    "static/js/2.583d6559.chunk.js": "/Runner_Ninja/static/js/2.583d6559.chunk.js",
-    "static/js/2.583d6559.chunk.js.map": "/Runner_Ninja/static/js/2.583d6559.chunk.js.map",
+    "static/js/2.f2bb743b.chunk.js": "/Runner_Ninja/static/js/2.f2bb743b.chunk.js",
+    "static/js/2.f2bb743b.chunk.js.map": "/Runner_Ninja/static/js/2.f2bb743b.chunk.js.map",
     "index.html": "/Runner_Ninja/index.html",
-    "precache-manifest.441a961a0b529c1c59608b27761c1729.js": "/Runner_Ninja/precache-manifest.441a961a0b529c1c59608b27761c1729.js",
+    "precache-manifest.6afcaaf8c932f84905171424156ff3da.js": "/Runner_Ninja/precache-manifest.6afcaaf8c932f84905171424156ff3da.js",
     "service-worker.js": "/Runner_Ninja/service-worker.js",
-    "static/js/2.583d6559.chunk.js.LICENSE.txt": "/Runner_Ninja/static/js/2.583d6559.chunk.js.LICENSE.txt",
+    "static/js/2.f2bb743b.chunk.js.LICENSE.txt": "/Runner_Ninja/static/js/2.f2bb743b.chunk.js.LICENSE.txt",
     "static/media/Glide_000.png": "/Runner_Ninja/static/media/Glide_000.e124eec0.png",
     "static/media/Jump__000.png": "/Runner_Ninja/static/media/Jump__000.069af838.png",
     "static/media/Jump__001.png": "/Runner_Ninja/static/media/Jump__001.2297b4da.png",
@@ -33,7 +33,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.165f8bcb.js",
-    "static/js/2.583d6559.chunk.js",
-    "static/js/main.640c8fd0.chunk.js"
+    "static/js/2.f2bb743b.chunk.js",
+    "static/js/main.8ed43195.chunk.js"
   ]
 }
