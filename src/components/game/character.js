@@ -10,12 +10,18 @@ class Character {
         this.sizeY = window.innerHeight * 0.15;
         this.JumpHeight = this.sizeY /14;
         this.Jumpcycle = 0;
+        this.flashing = 0;
+        this.flash = false;
     }
     charMode(newMode){
         this.mode = newMode;
         this.cycle = 0;
         this.spriteOn = 0;
         this.Jumpcycle = 0;
+    }
+    gotHit(){
+        this.flashing = 0;
+        this.flash = true;
     }
     render(state) {
         var context = state.context;
@@ -73,7 +79,22 @@ class Character {
                 this.charMode('run');
             }
         }
-        context.drawImage(images, this.X, this.Y, this.sizeX, this.sizeY);
+        if(this.flash){
+            this.flashing +=1
+            if(this.flashing > 5 && this.flashing < 16){
+                context.drawImage(images, this.X, this.Y, this.sizeX, this.sizeY);
+            }
+            else if (this.flashing > 20 && this.flashing < 31){
+                context.drawImage(images, this.X, this.Y, this.sizeX, this.sizeY);
+            }
+            if(this.flashing > 30){
+                this.flash = false;
+            }
+        }
+        else{
+            context.drawImage(images, this.X, this.Y, this.sizeX, this.sizeY);
+        }
+        
         this.cycle += 1;
     }
 }

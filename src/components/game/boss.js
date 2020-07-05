@@ -16,7 +16,10 @@ class Boss {
         this.direction = 'down';
         this.spriteNumber = 0;
         this.cycle = 1;
+        this.flashing = 0;
+        this.flash = false;
     }
+    
     changemode(mode) {
         this.mode = mode;
         this.cycle = 1;
@@ -74,7 +77,7 @@ class Boss {
             else if (this.spriteNumber === 9) {
                 this.sprite = { startX: 1580, startY: 310, width: 110, height: 65 };
             }
-            if (this.cycle % 12 === 0) {
+            if (this.cycle % 10 === 0) {
                 this.spriteNumber += 1;
             }
             if (this.spriteNumber > 9) {
@@ -82,16 +85,30 @@ class Boss {
             }
         }
     }
+    gotHit(){
+        this.flashing = 0;
+        this.flash = true;
+    }
     render(state) {
         this.spriteChange();
         this.cycle += 1;
         const context = state.context;
-        // drawimage(image, image startx, starty, widthsize, heightsize
-        // , canvas x location, canvas y location, canvas image size x, canvas image size y)
-        // if(this.attacked){
-        //     context.drawImage(state.monsterthreeImage, this.attsprite.startX, this.attsprite.startY, this.attsprite.width, this.attsprite.height, 0 - this.sizeX, (0 - this.sizeY), this.sizeX, this.sizeY);
-        // }
-        context.drawImage(state.NinjaImage.Boss[0], this.sprite.startX, this.sprite.startY, this.sprite.width, this.sprite.height, this.X, this.Y, this.sizeX, this.sizeY);
+        if(this.flash){
+            this.flashing +=1
+            if(this.flashing > 5 && this.flashing < 16){
+                context.drawImage(state.NinjaImage.Boss[0], this.sprite.startX, this.sprite.startY, this.sprite.width, this.sprite.height, this.X, this.Y, this.sizeX, this.sizeY);
+            }
+            else if (this.flashing > 20 && this.flashing < 31){
+                context.drawImage(state.NinjaImage.Boss[0], this.sprite.startX, this.sprite.startY, this.sprite.width, this.sprite.height, this.X, this.Y, this.sizeX, this.sizeY);
+            }
+            if(this.flashing > 30){
+                this.flash = false;
+            }
+        }
+        else{
+            context.drawImage(state.NinjaImage.Boss[0], this.sprite.startX, this.sprite.startY, this.sprite.width, this.sprite.height, this.X, this.Y, this.sizeX, this.sizeY);
+        }
+        
     }
 }
 export default Boss;

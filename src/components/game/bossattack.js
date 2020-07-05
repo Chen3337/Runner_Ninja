@@ -22,7 +22,7 @@ class BossAttack {
     }
     render(state) {
         this.cycle += 1;
-        if (this.cycle > 40) {
+        if (this.cycle > 50) {
             this.X -= this.distanceX;
             this.Y -= this.distanceY;
         }

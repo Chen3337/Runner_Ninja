@@ -100,6 +100,10 @@ class Game extends Component {
                                 if (Trap.damage) {
                                     Trap.finishDamge();
                                     var lossLife = this.state.Life - 1;
+                                    if(this.state.Character.flash){
+                                        lossLife += 1;
+                                    }
+                                    this.state.Character.gotHit();
                                     this.setState({
                                         Life: lossLife,
                                     })
@@ -113,6 +117,10 @@ class Game extends Component {
                                 if (Trap.damage) {
                                     Trap.finishDamge();
                                     var lossLife1 = this.state.Life - 1;
+                                    if(this.state.Character.flash){
+                                        lossLife1 += 1;
+                                    }
+                                    this.state.Character.gotHit();
                                     this.setState({
                                         Life: lossLife1,
                                     })
@@ -127,6 +135,10 @@ class Game extends Component {
                 if (this.state.bossAttack.X < (this.state.screenWidth * 0.05) && this.state.bossAttack.X > (this.state.screenWidth * 0.01)) {
                     if (this.state.bossAttack.Y > this.state.Character.Y && this.state.bossAttack.Y < (this.state.Character.Y + this.state.screenHeight * 0.13)) {
                         var lossLife2 = this.state.Life - 1;
+                        if(this.state.Character.flash){
+                            lossLife2 += 1;
+                        }
+                        this.state.Character.gotHit();
                         this.setState({
                             Life: lossLife2,
                             bossAttack: null,
@@ -145,7 +157,7 @@ class Game extends Component {
                     this.setState({ Kunai: null });
                 }
                 else if (this.state.Kunai.X > (this.state.screenWidth * 0.93) && this.state.Kunai.X < (this.state.screenWidth * 0.95)) {
-                    if (this.state.Kunai.Y > (this.state.Boss.Y - this.state.screenHeight * 0.05) && this.state.Kunai.Y < (this.state.Boss.Y + this.state.screenHeight * 0.18)) {
+                    if (this.state.Kunai.Y > (this.state.Boss.Y + this.state.screenHeight * 0.05) && this.state.Kunai.Y < (this.state.Boss.Y + this.state.screenHeight * 0.18)) {
                         var newbossScore = this.state.bossScore + 1;
                         var buff = this.state.lifebuff;
                         if(!buff){
@@ -153,6 +165,13 @@ class Game extends Component {
                             if(num === 0){
                                 buff = new LifeBuff(this.state.Boss.Y);
                             }
+                        }
+                        this.state.Boss.gotHit();
+                        if(this.state.Boss.mode === 'attack'){
+                            this.state.Boss.changemode('move');
+                            this.setState({
+                                bossAttack: null,
+                            })
                         }
                         this.setState({
                             bossScore: newbossScore,

@@ -10,6 +10,8 @@ class Wall {
     }
     finishDamge(){
         this.damage = false;
+        this.sizeY = this.sizeY /2;
+        this.Y += this.sizeY;
     }
     render(state){
         this.X -= this.distance;
