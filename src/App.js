@@ -39,7 +39,9 @@ class App extends Component {
               If on phone add this to home screen for better experience (fullscreen)
               <br />
             <br />
-            If on PC f11 for fullscreen</h2>
+            If on PC f11 for fullscreen
+            <button onClick={() => this.setState({ isLandscape: 90})}>Force start game</button>
+            </h2>
         }
       </div>
     )
